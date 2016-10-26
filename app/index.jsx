@@ -1,15 +1,16 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { render } from 'react-dom';
-import PlaceholderComponent from './PlaceholderComponent.jsx';
+import { Router, Route, browserHistory } from 'react-router';
+import Global from './components/global/';
+import Weather from './containers/weatherContainer';
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <PlaceholderComponent />
-      </div>
-    );
-  }
-}
+const App = () => (
+  <Router history={browserHistory}>
+    <Route path="/" component={Global}>
+      <Route path="/weather" component={Weather} />
+    </Route>
+  </Router>
+);
 
-render(<App/>, document.getElementById('app'));
+
+render(<App />, document.getElementById('app'));
