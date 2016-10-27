@@ -1,36 +1,46 @@
 import React, { Component } from 'react';
 import fetchJsonp from 'fetch-jsonp';
+import { connect } from 'react-redux';
 import Weather from '../components/weather/index';
-import api from '../config/api'
+import api from '../config/api';
+import config from '../config/config';
+import store from '../store';
 
 class WeatherContainer extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      summary: 'original summary',
-    };
-
+  componentDidMount() {
     this.getWeather();
   }
 
   getWeather() {
-    fetchJsonp(`https://api.darksky.net/forecast/${api.darkSkyKey}/37.8267,-122.4233`, {
+    fetchJsonp(`https://api.darksky.net/forecast/${api.darkSkyKey}/${config.latitude},${config.longitude}`, {
       method: 'GET',
       mode: 'no-cors',
       credentials: 'include',
     })
       .then(response => response.json())
       .then((response) => {
-        this.setState({ summary: response.daily.summary });
+        store.dispatch({
+          type: 'GET_USERS_SUCCESS',
+          weather: response,
+        });
       });
   }
 
   render() {
     return (
-      <Weather summary={this.state.summary} />
+      <Weather summary={this.props.weather} />
     );
   }
 }
 
-export default WeatherContainer;
+const mapStateToProps = (store) => {
+  return {
+    weather: store.weatherState.weather.daily.summary,
+  };
+};
+
+export default connect(mapStateToProps)(WeatherContainer);
+
+WeatherContainer.propTypes = {
+  weather: React.PropTypes.string,
+};

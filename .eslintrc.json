@@ -6,5 +6,7 @@
         "jsx-a11y",
         "import"
     ],
-    "skipBlankLines": true
+    "skipBlankLines": true,
+    "arrow-body-style": ["error", "as-needed", { "requireReturnForObjectLiteral": true }],
+    "forbid-prop-types": false
 }
