@@ -1,4 +1,4 @@
-import weatherTypes from '../actions/weather-action-types';
+import { weatherTypes } from '../actions/action-types';
 
 const initialState = {
   weather: {

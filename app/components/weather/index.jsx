@@ -1,14 +1,17 @@
 import React from 'react';
 
-const Weather = ({ summary }) => (
-  <div>
-    <p>This is the Weather</p>
-    <p> {summary} </p>
-  </div>
-);
+const Weather = ({ weather }) => {
+  console.log(weather);
+  return (
+    <div>
+      <p>This is the Weather</p>
+      <p> {weather.daily.summary} </p>
+    </div>
+  );
+};
 
 export default Weather;
 
 Weather.propTypes = {
-  summary: React.PropTypes.string,
+  weather: React.PropTypes.object,
 };

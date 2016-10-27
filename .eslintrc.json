@@ -7,6 +7,9 @@
         "import"
     ],
     "skipBlankLines": true,
-    "arrow-body-style": ["error", "as-needed", { "requireReturnForObjectLiteral": true }],
-    "forbid-prop-types": false
+    "rules": {
+      "arrow-body-style": ["error", "as-needed", { "requireReturnForObjectLiteral": true }],
+      "react/forbid-prop-types": ["error", { "forbid": ["any"] }],
+      "class-methods-use-this": "off"
+    }
 }

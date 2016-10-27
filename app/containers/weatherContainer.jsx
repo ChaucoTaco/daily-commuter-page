@@ -5,6 +5,7 @@ import Weather from '../components/weather/index';
 import api from '../config/api';
 import config from '../config/config';
 import store from '../store';
+import { getUsersSuccess } from '../actions/weather-actions';
 
 class WeatherContainer extends Component {
   componentDidMount() {
@@ -19,28 +20,27 @@ class WeatherContainer extends Component {
     })
       .then(response => response.json())
       .then((response) => {
-        store.dispatch({
-          type: 'GET_USERS_SUCCESS',
-          weather: response,
-        });
+        store.dispatch(
+          getUsersSuccess(response)
+        );
       });
   }
 
   render() {
     return (
-      <Weather summary={this.props.weather} />
+      <Weather weather={this.props.weather} />
     );
   }
 }
 
-const mapStateToProps = (store) => {
+const mapStateToProps = (storeState) => {
   return {
-    weather: store.weatherState.weather.daily.summary,
+    weather: storeState.weatherState.weather,
   };
 };
 
 export default connect(mapStateToProps)(WeatherContainer);
 
 WeatherContainer.propTypes = {
-  weather: React.PropTypes.string,
+  weather: React.PropTypes.object,
 };
