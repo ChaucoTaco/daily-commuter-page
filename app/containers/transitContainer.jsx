@@ -11,8 +11,9 @@ import { getSuccess } from '../actions/transit-actions';
 
 class transitContainer extends Component {
   componentDidMount() {
-    this.getTransit('westFourth');
     this.getTransit('unionSq');
+    this.getTransit('les');
+    this.getTransit('chelsea');
   }
 
   getTransit(location) {

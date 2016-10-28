@@ -10,6 +10,7 @@
     "rules": {
       "arrow-body-style": ["off"],
       "react/forbid-prop-types": ["error", { "forbid": ["any"] }],
-      "class-methods-use-this": "off"
+      "class-methods-use-this": "off",
+      "array-callback-return": "off"
     }
 }
