@@ -5,7 +5,7 @@ import Weather from '../components/weather/index';
 import api from '../config/api';
 import config from '../config/config';
 import store from '../store';
-import { getUsersSuccess } from '../actions/weather-actions';
+import { getSuccess } from '../actions/weather-actions';
 
 class WeatherContainer extends Component {
   componentDidMount() {
@@ -21,7 +21,7 @@ class WeatherContainer extends Component {
       .then(response => response.json())
       .then((response) => {
         store.dispatch(
-          getUsersSuccess(response)
+          getSuccess(response)
         );
       });
   }

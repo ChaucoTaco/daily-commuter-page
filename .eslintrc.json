@@ -8,7 +8,7 @@
     ],
     "skipBlankLines": true,
     "rules": {
-      "arrow-body-style": ["error", "as-needed", { "requireReturnForObjectLiteral": true }],
+      "arrow-body-style": ["off"],
       "react/forbid-prop-types": ["error", { "forbid": ["any"] }],
       "class-methods-use-this": "off"
     }
